@@ -1,0 +1,5 @@
+{
+    "mongoURI": "mongodb://0.0.0.0:27017/diceGame",
+    "jwtSecret": "]&hQ^K8-%UWi0ILmu4@?5Ay(NW*6Hs=!"
+  }
+  

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Configurer une Session de Jeu</title>
+</head>
+<body>
+    <h1>Configurer une Session de Jeu</h1>
+    <form method="POST" action="/configure-session">
+        <label for="session_name">Nom de la session:</label><br>
+        <input type="text" id="session_name" name="session_name"><br><br>
+        
+        <label for="num_players">Nombre de joueurs:</label><br>
+        <input type="number" id="num_players" name="num_players" min="1"><br><br>
+        
+        <label for="num_dice">Nombre de dés:</label><br>
+        <input type="number" id="num_dice" name="num_dice" min="1"><br><br>
+        
+        <label for="num_games">Nombre de parties:</label><br>
+        <input type="number" id="num_games" name="num_games" min="1"><br><br>
+        
+        <label for="wait_time">Temps d'attente entre chaque partie (en secondes):</label><br>
+        <input type="number" id="wait_time" name="wait_time" min="0"><br><br>
+        
+        <input type="submit" value="Configurer">
+    </form>
+</body>
+</html>
