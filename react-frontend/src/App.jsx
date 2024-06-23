@@ -32,7 +32,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login setAuth={setIsAuth} />} />
         <Route path="/configuration" element={isAuth ? <Configuration onConfigSubmit={fetchConfig} /> : <Navigate to="/login" />} />
-        <Route path="/gameplay" element={isAuth && config ? <GamePlay config={config} /> : <Navigate to="/login" />} />
+        <Route path="/gameplay" element={isAuth && config ? <GamePlay config={config} /> : <Navigate to="/configuration" />} />
         <Route path="/" element={<Navigate to={isAuth ? (config ? "/gameplay" : "/configuration") : "/login"} />} />
       </Routes>
     </Router>

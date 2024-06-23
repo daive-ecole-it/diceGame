@@ -26,7 +26,7 @@ const Configuration = ({ onConfigSubmit }) => {
       const response = await flaskApi.post('/configure-session', { ...form, creator });
       localStorage.setItem('sessionId', response.data.session_id);
       alert('Session configurée avec succès!');
-      onConfigSubmit(response.data.configuration);
+      await onConfigSubmit(response.data.session_id); // Fetch the updated config
       navigate('/gameplay');
     } catch (err) {
       console.error(err.response?.data || err.message);

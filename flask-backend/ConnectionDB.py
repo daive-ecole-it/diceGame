@@ -52,12 +52,13 @@ def configure_session():
     except Exception as e:
         logging.error(f"Error configuring session: {e}")
         return jsonify({'error': str(e)}), 500
-
 @app.route('/get-session/<session_id>', methods=['GET'])
 def get_session(session_id):
     try:
+        logging.debug(f"Received session ID: {session_id}")
         session = mongo.db.sessions.find_one({'_id': ObjectId(session_id)})
         if not session:
+            logging.error('Session not found')
             return jsonify({'error': 'Session not found'}), 404
 
         session_data = {
@@ -74,6 +75,28 @@ def get_session(session_id):
     except Exception as e:
         logging.error(f"Error fetching session: {e}")
         return jsonify({'error': str(e)}), 500
+    
+@app.route('/end-session/<session_id>', methods=['POST'])
+def end_session(session_id):
+    try:
+        data = request.json
+        logging.debug(f"Ending session with ID: {session_id} with data: {data}")
+        
+        # Update session with end date and final score
+        mongo.db.sessions.update_one(
+            {'_id': ObjectId(session_id)},
+            {'$set': {
+                'endDate': datetime.now(),
+                'score': data.get('score', 0)
+            }}
+        )
+
+        return jsonify({'message': 'Session ended successfully'}), 200
+    except Exception as e:
+        logging.error(f"Error ending session: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
 
 if __name__ == '__main__':
     app.run(port=5001, debug=True)

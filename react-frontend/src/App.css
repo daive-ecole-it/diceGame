@@ -40,3 +40,10 @@
 .read-the-docs {
   color: #888;
 }
+.dice {
+  transition: transform 0.2s;
+}
+
+.dice:hover {
+  transform: scale(1.1);
+}

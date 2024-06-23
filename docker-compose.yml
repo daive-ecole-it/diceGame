@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    networks:
+      - backend
+
+  flask-app:
+    build:
+      context: ./flask-backend
+      dockerfile: Dockerfile
+    container_name: flask-app
+    ports:
+      - "5001:5001"
+    depends_on:
+      - mongodb
+    networks:
+      - backend
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/diceGame
+
+  node-backend:
+    build:
+      context: ./node-backend
+      dockerfile: Dockerfile
+    container_name: node-backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    networks:
+      - backend
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/diceGame
+
+  react-frontend:
+    build:
+      context: ./react-frontend
+      dockerfile: Dockerfile
+    container_name: react-frontend
+    ports:
+      - "5173:5173"
+    networks:
+      - frontend
+    depends_on:
+      - node-backend
+      - flask-app
+
+networks:
+  backend:
+    driver: bridge
+  frontend:
+    driver: bridge
