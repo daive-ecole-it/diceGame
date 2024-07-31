@@ -51,7 +51,7 @@ const Login = ({ setAuth }) => {
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify({ username: res.data.user.username }));
       setAuth(true);
-      navigate('/configuration'); // Redirect to configuration page
+      navigate('/home'); // Redirect to configuration page
     } catch (err) {
       console.error(err.response.data);
     }
@@ -59,7 +59,6 @@ const Login = ({ setAuth }) => {
 
   return (
     <section>
-
       <div>
             <div>
                 <img src={desjeu} alt="DiceGame" className="bg-purple-900 absolute bg-gradient-to-b from-gray-900 via-gray-900 to-purple-800 bottom-0 leading-5 h-full w-full overflow-hidden" />

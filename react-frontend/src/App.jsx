@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from './components/Login';
+import Home1 from './components/Home1';
+import Partie1 from './components/Partie1';
 import Configuration from './components/Configuration';
+import Avatar from './components/Avatar';
 import GamePlay from './components/GamePlay';
 import flaskApi from './utils/flaskApi'; // Assurez-vous que vous avez un fichier pour gérer les appels API
 
@@ -31,6 +34,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<Login setAuth={setIsAuth} />} />
+        <Route path="/home" element={<Home1 />} />
+        <Route path="/partie1" element={<Partie1 />} />
+        <Route path="/avatar" element={<Avatar />} />
         <Route path="/configuration" element={isAuth ? <Configuration onConfigSubmit={fetchConfig} /> : <Navigate to="/login" />} />
         <Route path="/gameplay" element={isAuth && config ? <GamePlay config={config} /> : <Navigate to="/configuration" />} />
         <Route path="/" element={<Navigate to={isAuth ? (config ? "/gameplay" : "/configuration") : "/login"} />} />
