@@ -79,7 +79,7 @@ const Partie1 = () => {
 
         <div className="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
           <button
-            onClick={() => navigate('/home1')}
+           onClick={() => navigate('/home')}
             title="Game of Dice"
             className="text-center text-white focus:outline-none"
           >

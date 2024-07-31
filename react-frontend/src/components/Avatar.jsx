@@ -1,11 +1,13 @@
 // src/components/Avatar.js
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import face9 from "../images/9.jpg";
 import shtterstock from "../images/shutterstock_3436869_1_.webp";
 import R from "../images/R.jfif";
 import de1 from "../images/logo_de/1.png";
 
 const Avatar = () => {
+    const navigate = useNavigate();
     return (
         <div className="text-black bg-black">
             <main className="w-full min-h-screen transition-all main">
@@ -136,33 +138,30 @@ const Avatar = () => {
                         </div>
 
                         <div className="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
-                            <div>
-                                <a
-                                    href="../Home1.html  "
-                                    target="_blank"
-                                    title="Game of Dice"
-                                    className="text-center text-white focus:outline-none"
+                        <button
+                            onClick={() => navigate('/partie1')}
+                                title="Game of Dice"
+                                className="text-center text-white focus:outline-none"
+                            >
+                                <svg
+                                className="w-[36px] h-[36px] text-red-800 dark:text-white"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
                                 >
-                                    <svg
-                                        className="w-[36px] h-[36px] text-red-800 dark:text-white"
-                                        aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path fillRule="evenodd"
-                                            d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-
-                                    <p className="text-xl text-white">
-                                        Ba<strong>ck</strong>
-                                    </p>
-                                </a>
-                            </div>
+                                <path
+                                    fillRule="evenodd"
+                                    d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z"
+                                    clipRule="evenodd"
+                                />
+                                </svg>
+                                <p className="text-xl text-white">
+                                Ba<strong>ck</strong>
+                                </p>
+                        </button>
                         </div>
                     </div>
                 </div>
